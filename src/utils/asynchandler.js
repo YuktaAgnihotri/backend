@@ -1,11 +1,11 @@
- export const  Hnadler =  (fn) => ()=>{
+ export const  requestHandler =  (fn) => ()=>{
  (req , res ,next)
  }
 
 
-export const Handler2 = (fn) =>{
-   (req ,res ,next) => {
-    Promise.resolve(fn(req ,res ,next))     // 2nd way is to use promise syntax if the statement is true make 
+const asyncHandler = (requestHandler) =>{
+   return (req ,res ,next) => {
+    Promise.resolve(requestHandler(req ,res ,next))     // 2nd way is to use promise syntax if the statement is true make 
                                             // the flag true (next) and pass to other command
     .catch((err)=> next(err))
    }
@@ -24,3 +24,5 @@ export const Handler2 = (fn) =>{
         
     }
  }
+
+ export {asyncHandler}

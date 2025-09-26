@@ -1,21 +1,24 @@
 import dotenv from "dotenv"
-import mongoose from "mongoose"
+//import mongoose from "mongoose"
 import { connectDB } from "./db/index.js";
 import express from "express"
+import {app} from "./app.js";
+dotenv.config();
 
 
-
-const app = express();
 connectDB()
-.then(
-    app.listen(process.env.PORT || 6000, ()=>{
-        console.log(`server is running on ${process.env.PORT }`)
-    })
-)
-.catch((err)=>{
-    console.log("erros is : ", err  );
-    
+.then(() => {
+    app.get('/', (req, res) => {
+        res.send("hello running");
+    });
+    app.listen(process.env.PORT || 4000, () => {
+        console.log(`server is running on ${process.env.PORT}`);
+    });
 })
+.catch((err) => {
+    console.log("erros is : ", err);
+    
+});
 
 //takes time to load database so use async await ans try catch for debugging
 /*import express from "express"

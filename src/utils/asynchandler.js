@@ -1,5 +1,7 @@
  export const  requestHandler =  (fn) => ()=>{
- (req , res ,next)
+ (req , res ,next) =>{
+    
+ }
  }
 
 

@@ -4,6 +4,7 @@ class Apierror extends Error {
         message = "Something went wrong",
         errors =[],
         stack = "",
+        data,
 
     ){
         super(message)     //This will overwrite the features of Error class
